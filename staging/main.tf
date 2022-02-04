@@ -10,10 +10,10 @@ terraform {
 
 # for cloud usage these vars have been defined in terraform cloud as a set
 # we only need to use this when importing existing resources
-provider "akamai" {
+/*provider "akamai" {
   edgerc         = "~/.edgerc"
   config_section = "betajam"
-}
+}*/
 
 # we're storing the state in terraform cloud
 # when using existing resource first import it using 'terraform import akamai_cloudlets_policy.phased_release <cl_policy_name>'
