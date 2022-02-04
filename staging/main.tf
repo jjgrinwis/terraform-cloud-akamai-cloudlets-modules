@@ -10,16 +10,14 @@ terraform {
 
 # for cloud usage these vars have been defined in terraform cloud as a set
 # we only need to use this when importing existing resources
-/*provider "akamai" {
+/* provider "akamai" {
   edgerc         = "~/.edgerc"
   config_section = "betajam"
-}*/
+} */
 
-# we're storing the state in terraform cloud
-# when using existing resource first import it using 'terraform import akamai_cloudlets_policy.phased_release <cl_policy_name>'
-# https://support.hashicorp.com/hc/en-us/articles/360061289934-How-to-Import-Resources-into-a-Remote-State-Managed-by-Terraform-Cloud
-# you need to define the remote backend and make sure to select correct workspace ;-)
-# when running in Terraform Cloud you don't need this section anymore
+# Information is stored in Terraform Cloud
+# to import it via a module use:
+# 'terraform import module.phased_release.akamai_cloudlets_policy.phased_release <policy_name>'
 terraform {
   backend "remote" {
     organization = "grinwis-com"
