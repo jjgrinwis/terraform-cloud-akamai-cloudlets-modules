@@ -41,11 +41,14 @@ module "phased_release" {
 # lookup the cloudlet policy created via our module
 data "akamai_cloudlets_policy" "pr_policy" {
   policy_id = module.phased_release.id
+  depends_on = [
+    module.phased_release
+  ]
 }
 
 # now activate this policy on staging using latest policy version by default.
 resource "akamai_cloudlets_policy_activation" "pr_staging" {
-  policy_id = module.phased_release.id
+  policy_id = data.akamai_cloudlets_policy.pr_policy.id
   network   = "staging"
   version   = var.policy_version == null ? split(":", data.akamai_cloudlets_policy.pr_policy.id)[1] : var.policy_version
   # version               = resource.akamai_cloudlets_policy.phased_release.version
