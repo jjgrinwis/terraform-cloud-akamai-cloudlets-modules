@@ -18,7 +18,7 @@ terraform {
 # Information is stored in Terraform Cloud
 # to import it via a module use:
 # 'terraform import module.phased_release.akamai_cloudlets_policy.phased_release <policy_name>'
-terraform {
+/*terraform {
   backend "remote" {
     organization = "grinwis-com"
 
@@ -26,7 +26,7 @@ terraform {
       name = "phased-release-staging"
     }
   }
-}
+}*/
 
 # let's use our phased release module to create a policy based on module rules file
 # this will not activate the policy, it will only create it.

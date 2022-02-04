@@ -17,7 +17,7 @@ terraform {
 # Information is stored in Terraform Cloud
 # to import it via a module use:
 # 'terraform import module.phased_release.akamai_cloudlets_policy.phased_release <policy_name>'
-terraform {
+/*terraform {
   backend "remote" {
     organization = "grinwis-com"
 
@@ -25,12 +25,12 @@ terraform {
       name = "phased-release-prod"
     }
   }
-}
+}*/
 
 # we use information from our staging setup but we only need the policy id and optionally the latest version
 data "tfe_outputs" "staging" {
   organization = "grinwis-com"
-  workspace    = "phased-release-new"
+  workspace    = "phased-release-staging"
 }
 
 # now activate this policy on production using latest policy version by default.
