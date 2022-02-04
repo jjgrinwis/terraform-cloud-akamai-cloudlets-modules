@@ -48,7 +48,7 @@ data "akamai_cloudlets_policy" "pr_policy" {
 
 # now activate this policy on staging using latest policy version by default.
 resource "akamai_cloudlets_policy_activation" "pr_staging" {
-  policy_id = data.akamai_cloudlets_policy.pr_policy.id
+  policy_id = module.phased_release.id
   network   = "staging"
   version   = var.policy_version == null ? split(":", data.akamai_cloudlets_policy.pr_policy.id)[1] : var.policy_version
   # version               = resource.akamai_cloudlets_policy.phased_release.version
