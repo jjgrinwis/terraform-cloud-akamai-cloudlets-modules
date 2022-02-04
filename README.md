@@ -1,4 +1,4 @@
-# Akamai Terraform Cloud Cloudlet examples #
+# Akamai Terraform Cloud Phased Release Cloudlet example #
 
 some example code on how to use the Phased Release cloudlet with Terraform Cloud with a single policy.
 In the staging environment you create your policies and push to staging. When activate on staging you can run tests to make sure policy is behaving like expected.
