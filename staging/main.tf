@@ -23,7 +23,7 @@ terraform {
     organization = "grinwis-com"
 
     workspaces {
-      name = "phased-release-new"
+      name = "phased-release-staging"
     }
   }
 }
