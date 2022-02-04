@@ -14,7 +14,7 @@ terraform {
   config_section = "betajam"
 }*/
 
-# Information is stored in Terraform Cloud
+# Information is stored in Terraform Cloud if using VCS connection you don't need this section.
 # to import it via a module use:
 # 'terraform import module.phased_release.akamai_cloudlets_policy.phased_release <policy_name>'
 /*terraform {
@@ -28,6 +28,7 @@ terraform {
 }*/
 
 # we use information from our staging setup but we only need the policy id and optionally the latest version
+# make sure to share the output vars from this workspace with other workspace(s)
 data "tfe_outputs" "staging" {
   organization = "grinwis-com"
   workspace    = "phased-release-staging"
