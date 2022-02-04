@@ -41,6 +41,8 @@ module "phased_release" {
 # lookup the cloudlet policy created via our module
 data "akamai_cloudlets_policy" "pr_policy" {
   policy_id = module.phased_release.id
+
+  # we need to make sure module.phased_release has done it's job otherwise there will be a version mismatch
   depends_on = [
     module.phased_release
   ]
@@ -48,9 +50,8 @@ data "akamai_cloudlets_policy" "pr_policy" {
 
 # now activate this policy on staging using latest policy version by default.
 resource "akamai_cloudlets_policy_activation" "pr_staging" {
-  policy_id = module.phased_release.id
-  network   = "staging"
-  version   = var.policy_version == null ? split(":", data.akamai_cloudlets_policy.pr_policy.id)[1] : var.policy_version
-  # version               = resource.akamai_cloudlets_policy.phased_release.version
+  policy_id             = module.phased_release.id
+  network               = "staging"
+  version               = var.policy_version == null ? split(":", data.akamai_cloudlets_policy.pr_policy.id)[1] : var.policy_version
   associated_properties = var.hostnames
 }

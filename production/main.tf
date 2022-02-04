@@ -27,7 +27,7 @@ terraform {
   }
 }
 
-# 
+# we use information from our staging setup but we only need the policy id and optionally the latest version
 data "tfe_outputs" "staging" {
   organization = "grinwis-com"
   workspace    = "phased-release-new"
