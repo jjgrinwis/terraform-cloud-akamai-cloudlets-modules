@@ -33,3 +33,9 @@ variable "policy_version" {
   type        = number
   default     = null
 }
+
+variable "workspace" {
+  description = "Terraform cloud workspace to use"
+  type        = string
+  default     = "phase-release-cloudlet"
+}
